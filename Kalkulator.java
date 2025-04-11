@@ -72,81 +72,87 @@ public class Kalkulator {
     }
     
     public static void main(String[] args) {
-        // Membuat objek Scanner untuk membaca input
         Scanner scanner = new Scanner(System.in);
-        // Membuat instance kalkulator untuk memanggil method non-static
         Kalkulator kalkulator = new Kalkulator();
         
-        // Menampilkan menu operasi
-        System.out.println("=== KALKULATOR MEGA ===");
-        System.out.println("Pilih operasi:");
-        System.out.println("1. Penjumlahan");
-        System.out.println("2. Pengurangan");
-        System.out.println("3. Perkalian");
-        System.out.println("4. Pembagian");
-        System.out.println("5. Penyederhanaan Pecahan");
-        System.out.print("Masukkan pilihan (1-5): ");
-        
-        // Membaca pilihan user
-        int pilihan = scanner.nextInt();
-        
-        // Switch case untuk menangani berbagai operasi
-        switch(pilihan) {
-            case 1: // Penjumlahan
-                System.out.print("Masukkan bilangan pertama: ");
-                double a1 = scanner.nextDouble();
-                System.out.print("Masukkan bilangan kedua: ");
-                double b1 = scanner.nextDouble();
-                // Memanggil static method tambah
-                System.out.println("Hasil: " + a1 + " + " + b1 + " = " + tambah(a1, b1));
+        while (true) {
+            // Menampilkan menu operasi
+            System.out.println("\n=== KALKULATOR MEGA ===");
+            System.out.println("Pilih operasi:");
+            System.out.println("1. Penjumlahan");
+            System.out.println("2. Pengurangan");
+            System.out.println("3. Perkalian");
+            System.out.println("4. Pembagian");
+            System.out.println("5. Penyederhanaan Pecahan");
+            System.out.println("0. Keluar");
+            System.out.print("Masukkan pilihan (1-5/0): ");
+            
+            // Membaca pilihan user
+            int pilihan = scanner.nextInt();
+            
+            if (pilihan == 0) {
+                System.out.println("Program dihentikan.");
                 break;
-                
-            case 2: // Pengurangan
-                System.out.print("Masukkan bilangan pertama: ");
-                double a2 = scanner.nextDouble();
-                System.out.print("Masukkan bilangan kedua: ");
-                double b2 = scanner.nextDouble();
-                // Memanggil static method kurang
-                System.out.println("Hasil: " + a2 + " - " + b2 + " = " + kurang(a2, b2));
-                break;
-                
-            case 3: // Perkalian
-                System.out.print("Masukkan bilangan pertama: ");
-                double a3 = scanner.nextDouble();
-                System.out.print("Masukkan bilangan kedua: ");
-                double b3 = scanner.nextDouble();
-                // Memanggil non-static method kali
-                System.out.println("Hasil: " + a3 + " * " + b3 + " = " + kalkulator.kali(a3, b3));
-                break;
-                
-            case 4: // Pembagian
-                System.out.print("Masukkan bilangan pertama: ");
-                double a4 = scanner.nextDouble();
-                System.out.print("Masukkan bilangan kedua: ");
-                double b4 = scanner.nextDouble();
-                try {
-                    // Memanggil non-static method bagi dengan try-catch untuk error handling
-                    System.out.println("Hasil: " + a4 + " / " + b4 + " = " + kalkulator.bagi(a4, b4));
-                } catch (IllegalArgumentException e) {
-                    System.out.println("Error: " + e.getMessage());
-                }
-                break;
-                
-            case 5: // Penyederhanaan Pecahan
-                System.out.print("Masukkan pembilang: ");
-                int pembilang = scanner.nextInt();
-                System.out.print("Masukkan penyebut: ");
-                int penyebut = scanner.nextInt();
-                try {
-                    // Memanggil method sederhana dengan try-catch untuk error handling
-                    System.out.println("Hasil penyederhanaan: " + kalkulator.sederhana(pembilang, penyebut));
-                } catch (IllegalArgumentException e) {
-                    System.out.println("Error: " + e.getMessage());
-                }
-                break;
-                
-            default: // Pilihan tidak valid
-                System.out.println("Pilihan tidak valid!");
+            }
+            
+            // Switch case untuk menangani berbagai operasi
+            switch(pilihan) {
+                case 1: // Penjumlahan
+                    System.out.print("Masukkan bilangan pertama: ");
+                    double a1 = scanner.nextDouble();
+                    System.out.print("Masukkan bilangan kedua: ");
+                    double b1 = scanner.nextDouble();
+                    // Memanggil static method tambah
+                    System.out.println("Hasil: " + a1 + " + " + b1 + " = " + tambah(a1, b1));
+                    break;
+                    
+                case 2: // Pengurangan
+                    System.out.print("Masukkan bilangan pertama: ");
+                    double a2 = scanner.nextDouble();
+                    System.out.print("Masukkan bilangan kedua: ");
+                    double b2 = scanner.nextDouble();
+                    // Memanggil static method kurang
+                    System.out.println("Hasil: " + a2 + " - " + b2 + " = " + kurang(a2, b2));
+                    break;
+                    
+                case 3: // Perkalian
+                    System.out.print("Masukkan bilangan pertama: ");
+                    double a3 = scanner.nextDouble();
+                    System.out.print("Masukkan bilangan kedua: ");
+                    double b3 = scanner.nextDouble();
+                    // Memanggil non-static method kali
+                    System.out.println("Hasil: " + a3 + " * " + b3 + " = " + kalkulator.kali(a3, b3));
+                    break;
+                    
+                case 4: // Pembagian
+                    System.out.print("Masukkan bilangan pertama: ");
+                    double a4 = scanner.nextDouble();
+                    System.out.print("Masukkan bilangan kedua: ");
+                    double b4 = scanner.nextDouble();
+                    try {
+                        // Memanggil non-static method bagi dengan try-catch untuk error handling
+                        System.out.println("Hasil: " + a4 + " / " + b4 + " = " + kalkulator.bagi(a4, b4));
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
+                    break;
+                    
+                case 5: // Penyederhanaan Pecahan
+                    System.out.print("Masukkan pembilang: ");
+                    int pembilang = scanner.nextInt();
+                    System.out.print("Masukkan penyebut: ");
+                    int penyebut = scanner.nextInt();
+                    try {
+                        // Memanggil method sederhana dengan try-catch untuk error handling
+                        System.out.println("Hasil penyederhanaan: " + kalkulator.sederhana(pembilang, penyebut));
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
+                    break;
+                    
+                default: // Pilihan tidak valid
+                    System.out.println("Pilihan tidak valid!");
+            }
         }
         
         // Menutup scanner untuk menghindari resource leak
